@@ -1,0 +1,15 @@
+/ (root of repo)
+  index.html
+  styles.css
+  /images
+      renovation.jpg
+      decks.jpg
+      cabinets.jpg
+      trim.jpg
+      repair.jpg
+  /gallery
+      work1.jpg
+      work2.jpg
+      work3.jpg
+      work4.jpg
+      gallery.json
