@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- Title and meta description for SEO -->
   <title>Todd Carpenter | Custom Carpentry Services</title>
   <meta name="description" content="Todd Carpenter provides custom carpentry services including decks, kitchen and bathroom remodels, and home renovations. Serving Waukee, IA 50263.">
-  
+
   <!-- Google Search Console verification -->
   <meta name="google-site-verification" content="iMQfroaJo64FVGybjwu-ITZklEOaKJYkyPdayAlO0RE" />
-  
+
   <!-- Styles and fonts -->
   <link href="styles.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
@@ -73,6 +73,7 @@ My focus is on precision, reliability, and making sure every job — big or smal
       <p class="gallery-note">*Add images to the `gallery/` folder and update `gallery.json`—they will automatically appear here.*</p>
 
       <script>
+        // Fetch gallery.json to automatically display images
         fetch('gallery/gallery.json')
           .then(response => response.json())
           .then(images => {
@@ -107,6 +108,7 @@ My focus is on precision, reliability, and making sure every job — big or smal
   </footer>
 </body>
 </html>
+
 
 
 
