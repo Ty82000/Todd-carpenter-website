@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Title and meta description for SEO -->
-  <title>Todd Carpenter | Custom Carpentry Services</title>
-  <meta name="description" content="Todd Carpenter provides custom carpentry services including decks, kitchen and bathroom remodels, and home renovations. Serving Waukee, IA 50263.">
+  <title>Isaac's Carpentry | Custom Carpentry Services</title>
+  <meta name="description" content="Isaac's Carpentry provides custom carpentry services including decks, kitchen and bathroom remodels, and home renovations. Serving Waukee, IA 50263." />
+  <meta name="keywords" content="carpentry, custom decks, remodeling, bathroom remodel, kitchen remodel, home renovation, Waukee IA carpenter" />
 
   <!-- Google Search Console verification -->
   <meta name="google-site-verification" content="iMQfroaJo64FVGybjwu-ITZklEOaKJYkyPdayAlO0RE" />
+
+  <!-- Open Graph for social media -->
+  <meta property="og:title" content="Isaac's Carpentry | Custom Carpentry Services" />
+  <meta property="og:description" content="Custom carpentry, decks, remodels, and home renovations in Waukee, IA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ty82000.github.io/Todd-carpenter-website/" />
+  <meta property="og:image" content="images/decks.jpg" />
 
   <!-- Styles and fonts -->
   <link href="styles.css" rel="stylesheet" />
@@ -19,7 +27,7 @@
   <header class="site-header">
     <div class="container">
       <h1>Isaac's Carpentry</h1>
-      <p>Custom decks & Carpentry Services</p>
+      <p>Custom Decks & Carpentry Services</p>
     </div>
   </header>
 
@@ -28,9 +36,12 @@
     <section class="about">
       <h2>About Me</h2>
       <p>
-Hi, I'm Todd — a dedicated carpenter with over 3 years of hands-on experience turning ideas into quality craftsmanship. I specialize in custom decks, bathroom and kitchen remodels, and have even finished unfinished basements.
-
-My focus is on precision, reliability, and making sure every job — big or small — is done right. Whether you need a repair, a remodel, or a custom piece, I'm here to help bring your vision to life.
+        Hi, I'm Isaac — a dedicated carpenter with over 3 years of hands-on experience turning ideas into quality craftsmanship. 
+        I specialize in custom decks, bathroom and kitchen remodels, and have even finished unfinished basements.
+      </p>
+      <p>
+        My focus is on precision, reliability, and making sure every job — big or small — is done right. 
+        Whether you need a repair, a remodel, or a custom piece, I'm here to help bring your vision to life.
       </p>
     </section>
 
@@ -39,27 +50,27 @@ My focus is on precision, reliability, and making sure every job — big or smal
       <h2>Services</h2>
       <div class="cards">
         <article class="card">
-          <img src="images/renovation.jpg" alt="Home Renovation" />
+          <img src="images/renovation.jpg" alt="Example of a home renovation project" loading="lazy" />
           <h3>Home Renovation</h3>
           <p>Walls, floors, ceilings, and everything in between—expertly crafted.</p>
         </article>
         <article class="card">
-          <img src="images/decks.jpg" alt="Decks & Outdoor" />
+          <img src="images/decks.jpg" alt="Custom deck with outdoor seating" loading="lazy" />
           <h3>Decks & Outdoor</h3>
           <p>Strong, beautiful outdoor spaces made to last.</p>
         </article>
         <article class="card">
-          <img src="images/cabinets.jpg" alt="Cabinetry" />
+          <img src="images/cabinets.jpg" alt="Custom-built kitchen cabinetry" loading="lazy" />
           <h3>Cabinetry</h3>
           <p>Custom-built cabinets for kitchens, bathrooms, and garages.</p>
         </article>
         <article class="card">
-          <img src="images/trim.jpg" alt="Trim & Molding" />
+          <img src="images/trim.jpg" alt="Interior trim and crown molding work" loading="lazy" />
           <h3>Trim & Molding</h3>
           <p>Elegant finishing touches with baseboards, crown molding, and more.</p>
         </article>
         <article class="card">
-          <img src="images/repair.jpg" alt="Repairs & Fixes" />
+          <img src="images/repair.jpg" alt="Carpenter performing a repair job" loading="lazy" />
           <h3>Repairs & Fixes</h3>
           <p>From broken stairs to squeaky floors—fast, reliable repairs.</p>
         </article>
@@ -70,7 +81,7 @@ My focus is on precision, reliability, and making sure every job — big or smal
     <section class="gallery">
       <h2>Photo Gallery</h2>
       <div id="gallery-grid" class="gallery-grid"></div>
-      <p class="gallery-note">*Add images to the `gallery/` folder and update `gallery.json`—they will automatically appear here.*</p>
+      <p class="gallery-note">*Add images to the <code>gallery/</code> folder and update <code>gallery.json</code>—they will automatically appear here.*</p>
 
       <script>
         // Fetch gallery.json to automatically display images
@@ -78,14 +89,22 @@ My focus is on precision, reliability, and making sure every job — big or smal
           .then(response => response.json())
           .then(images => {
             const galleryGrid = document.getElementById("gallery-grid");
+            if (images.length === 0) {
+              galleryGrid.innerHTML = "<p>No images available yet.</p>";
+              return;
+            }
             images.forEach(filename => {
               const img = document.createElement("img");
               img.src = `gallery/${filename}`;
-              img.alt = filename.replace(/\.[^/.]+$/, "");
+              img.alt = "Project photo: " + filename.replace(/\.[^/.]+$/, "");
+              img.loading = "lazy";
               galleryGrid.appendChild(img);
             });
           })
-          .catch(err => console.error("Could not load gallery.json", err));
+          .catch(err => {
+            console.error("Could not load gallery.json", err);
+            document.getElementById("gallery-grid").innerHTML = "<p>Gallery unavailable at this time.</p>";
+          });
       </script>
     </section>
 
@@ -93,9 +112,15 @@ My focus is on precision, reliability, and making sure every job — big or smal
     <section class="contact">
       <h2>Contact Me</h2>
       <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
+        <label for="name">Your Name</label>
+        <input id="name" type="text" placeholder="Your Name" required />
+
+        <label for="email">Your Email</label>
+        <input id="email" type="email" placeholder="Your Email" required />
+
+        <label for="message">Your Message</label>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+
         <button type="submit">Send Message</button>
       </form>
     </section>
@@ -104,6 +129,11 @@ My focus is on precision, reliability, and making sure every job — big or smal
   <footer class="site-footer">
     <div class="container">
       <p>© 2025 Isaac's Carpentry. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+
     </div>
   </footer>
 </body>
